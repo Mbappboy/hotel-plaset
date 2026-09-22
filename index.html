@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Hotel Plaset Reservations</title>
+  <title>Hotel Plaset | Room Reservation</title>
 
   <style>
     * {
@@ -16,39 +16,49 @@
       margin: 0;
       padding: 40px 20px;
       font-family: Arial, sans-serif;
-      background: #eef2f7;
+      background: linear-gradient(135deg, #172554, #2563eb);
+      min-height: 100vh;
     }
 
-    .form-container {
-      max-width: 500px;
-      margin: 50px auto;
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
       background: white;
-      padding: 35px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      border-radius: 18px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
     }
 
-    h1 {
+    .hotel-name {
       text-align: center;
-      margin-top: 0;
-      color: #222;
+      font-size: 38px;
+      font-weight: bold;
+      color: #172554;
+      margin-bottom: 5px;
     }
 
-    .description {
+    .subtitle {
       text-align: center;
-      color: #666;
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
       margin-bottom: 30px;
     }
 
     label {
       display: block;
-      margin-bottom: 7px;
       margin-top: 18px;
+      margin-bottom: 7px;
       font-weight: bold;
       color: #333;
     }
 
     input,
+    select,
     textarea {
       width: 100%;
       padding: 13px;
@@ -56,100 +66,254 @@
       border-radius: 8px;
       font-size: 16px;
       font-family: Arial, sans-serif;
+      background: white;
     }
 
     input:focus,
+    select:focus,
     textarea:focus {
       outline: none;
-      border-color: #007bff;
+      border-color: #2563eb;
+    }
+
+    .row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .row > div {
+      flex: 1;
     }
 
     textarea {
-      height: 150px;
+      height: 120px;
       resize: vertical;
     }
 
     button {
       width: 100%;
-      margin-top: 25px;
-      padding: 14px;
-      background: #007bff;
-      color: white;
+      margin-top: 30px;
+      padding: 15px;
       border: none;
       border-radius: 8px;
+      background: #2563eb;
+      color: white;
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
     }
 
     button:hover {
-      background: #0056b3;
+      background: #1d4ed8;
+    }
+
+    .notice {
+      margin-top: 20px;
+      padding: 12px;
+      background: #f1f5f9;
+      border-radius: 8px;
+      color: #666;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .footer {
+      margin-top: 25px;
+      text-align: center;
+      color: #999;
+      font-size: 13px;
+    }
+
+    @media (max-width: 550px) {
+      .container {
+        padding: 25px;
+      }
+
+      .row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .hotel-name {
+        font-size: 30px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="form-container">
+  <div class="container">
 
-    <h1>Contact Me</h1>
-
-    <div class="description">
-      Send me a message using the form below.
+    <div class="hotel-name">
+      Hotel Plaset
     </div>
+
+    <div class="subtitle">
+      Reserve your stay with us
+    </div>
+
+    <h2>Room Reservation</h2>
 
     <form
       action="https://formsubmit.co/rebeccajklein@gmail.com"
       method="POST"
     >
 
-      <label for="name">Name</label>
+      <!-- Guest information -->
+
+      <label for="name">
+        Guest Name
+      </label>
 
       <input
         type="text"
         id="name"
-        name="name"
-        placeholder="Your name"
+        name="Guest Name"
+        placeholder="Full name"
         required
       >
 
 
-      <label for="email">Email</label>
+      <label for="email">
+        Email Address
+      </label>
 
       <input
         type="email"
         id="email"
-        name="email"
+        name="Guest Email"
         placeholder="you@example.com"
         required
       >
 
 
-      <label for="message">Message</label>
+      <label for="phone">
+        Phone Number
+      </label>
+
+      <input
+        type="tel"
+        id="phone"
+        name="Phone Number"
+        placeholder="Phone number"
+        required
+      >
+
+
+      <!-- Reservation details -->
+
+      <div class="row">
+
+        <div>
+          <label for="checkin">
+            Check-in Date
+          </label>
+
+          <input
+            type="date"
+            id="checkin"
+            name="Check-in Date"
+            required
+          >
+        </div>
+
+        <div>
+          <label for="nights">
+            Number of Nights
+          </label>
+
+          <input
+            type="number"
+            id="nights"
+            name="Number of Nights"
+            min="1"
+            max="30"
+            placeholder="1"
+            required
+          >
+        </div>
+
+      </div>
+
+
+      <label for="guests">
+        Number of Guests
+      </label>
+
+      <select
+        id="guests"
+        name="Number of Guests"
+        required
+      >
+        <option value="">Select guests</option>
+        <option value="1">1 guest</option>
+        <option value="2">2 guests</option>
+        <option value="3">3 guests</option>
+        <option value="4">4 guests</option>
+        <option value="5">5 guests</option>
+        <option value="6">6 guests</option>
+        <option value="7">7 guests</option>
+        <option value="8">8 guests</option>
+      </select>
+
+
+      <label for="room">
+        Room Type
+      </label>
+
+      <select
+        id="room"
+        name="Room Type"
+        required
+      >
+        <option value="">Select a room</option>
+        <option value="Standard Room">
+          Standard Room
+        </option>
+        <option value="Deluxe Room">
+          Deluxe Room
+        </option>
+        <option value="Suite">
+          Suite
+        </option>
+        <option value="Family Room">
+          Family Room
+        </option>
+      </select>
+
+
+      <label for="requests">
+        Special Requests
+      </label>
 
       <textarea
-        id="message"
-        name="message"
-        placeholder="Write your message here..."
-        required
+        id="requests"
+        name="Special Requests"
+        placeholder="Any special requests or information?"
       ></textarea>
 
 
       <!-- Email subject -->
+
       <input
         type="hidden"
         name="_subject"
-        value="New Contact Form Message"
+        value="New Hotel Plaset Room Reservation"
       >
 
+
+      <!-- Redirect after submission -->
+
       <input
-  type="hidden"
-  name="_next"
-  value="https://Mbappboy.github.io/my-contact-form/thank-you.html"
->
+        type="hidden"
+        name="_next"
+        value="https://Mbappboy.github.io/my-contact-form/thank-you.html"
+      >
 
 
-      <!-- Prevent FormSubmit's CAPTCHA -->
+      <!-- Spam protection -->
+
       <input
         type="hidden"
         name="_captcha"
@@ -158,10 +322,19 @@
 
 
       <button type="submit">
-        Send Message
+        Request Reservation
       </button>
 
     </form>
+
+    <div class="notice">
+      Your reservation request will be sent to Hotel Plaset.
+      We will contact you to confirm availability.
+    </div>
+
+    <div class="footer">
+      © 2026 Hotel Plaset
+    </div>
 
   </div>
 
